@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RestService } from '../../services/rest.service';
+
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  ciclos:any;
+  token:any;
+  constructor(public restService:RestService) {
+    this.hacerLogin();
+  }
 
+  obtenerCiclos(){
+    this.restService.getCiclos(this.token).then(data=>{
+      this.ciclos=data;
+    });
+  }
+  hacerLogin(){
+    this.restService.login().then(data=>{this.token=data;});
+  }
 }
