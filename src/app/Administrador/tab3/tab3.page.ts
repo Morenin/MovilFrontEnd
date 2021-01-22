@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RestService } from '../../services/rest.service';
+import { Ciclos } from '../../interfaces/Ciclos';
+
 
 
 @Component({
@@ -18,6 +20,7 @@ export class Tab3Page {
   obtenerCiclos(){
     this.restService.getCiclos(this.token).then(data=>{
       this.ciclos=data;
+      console.log(this.ciclos)
     });
   }
   hacerLogin(){
