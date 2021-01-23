@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RestService } from '../../services/rest.service';
-import { Ciclos } from '../../interfaces/Ciclos';
+
 
 
 
@@ -18,7 +18,7 @@ export class Tab3Page {
   }
 
   obtenerCiclos(){
-    this.restService.getCiclos(this.token).then(data=>{
+    this.restService.getArticles(this.token).then(data=>{
       this.ciclos=data;
       console.log(this.ciclos)
     });
