@@ -17,6 +17,7 @@ export class Tab2Page {
     this.restService.getArticles()
     .then(data => {
       this.noticias = data;
+      console.log(this.noticias);
     });
   }
 }

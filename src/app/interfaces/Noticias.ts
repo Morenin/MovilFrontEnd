@@ -1,4 +1,4 @@
-export interface offers{
+export interface articles{
     success: boolean,
     data: Data[],
     message: string
@@ -6,10 +6,10 @@ export interface offers{
 
 export interface Data{
     id: number,
-    headline: string,
+    title: string,
     description: string,
+    image: string,
     cicle_id: number,
-    date_max: Date,
-    num_candidates: number,
+    cicle_name: string,
+    created_at: Date
 }
-

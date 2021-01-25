@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RestService } from '../../services/rest.service';
+import { articles } from '../../interfaces/Noticias';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  noticias: articles;
+  constructor(public restService: RestService) {
+    this.obtenerNoticias();
+  }
+
+
+  obtenerNoticias(){
+    this.restService.getArticles()
+    .then(data => {
+      this.noticias = data;
+      console.log(this.noticias);
+    });
+  }
 
 }
