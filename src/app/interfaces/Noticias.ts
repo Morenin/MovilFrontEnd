@@ -1,10 +1,4 @@
-export interface articles{
-    success: boolean,
-    data: Data[],
-    message: string
-}
-
-export interface Data{
+export interface Noticia{
     id: number,
     title: string,
     description: string,
