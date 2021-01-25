@@ -49,10 +49,10 @@ export class RestService {
         });
     });
   }
-  getArticles(tok: any) {
+  getArticles() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + '/articles', {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.success.token),
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token.success.token),
       })
         .subscribe(data => {
           resolve(data);
