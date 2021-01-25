@@ -14,7 +14,6 @@ export class Tab1Page {
     this.obtenerNoticias();
   }
 
-
   obtenerNoticias(){
     this.restService.getArticles()
     .then(data => {
