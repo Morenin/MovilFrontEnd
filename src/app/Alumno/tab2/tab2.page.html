@@ -7,11 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+ <ion-list *ngIf="noticias">
+ <ion-item *ngFor="let noticia of noticias.data">
+ <h2>{{noticia.id}}</h2>
+ <p>{{noticia.title}}</p>
+ </ion-item>
+ </ion-list>
 </ion-content>

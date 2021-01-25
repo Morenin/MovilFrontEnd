@@ -56,9 +56,7 @@ export class RestService {
   }
   getArticles() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/articles', {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token.success.token),
-      })
+      this.http.get(this.apiUrl + '/articles')
         .subscribe(data => {
           resolve(data);
         }, err => {
