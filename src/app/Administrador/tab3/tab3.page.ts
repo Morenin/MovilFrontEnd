@@ -1,12 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonList } from '@ionic/angular';
 import { RestService } from '../../services/rest.service';
-import { Offers } from '../../interfaces/Offers';
-
-
-
-
-
 
 
 @Component({
