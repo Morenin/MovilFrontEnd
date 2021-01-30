@@ -9,17 +9,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PipesModule } from './pipes/pipes.module';
 
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(),HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(),HttpClientModule, AppRoutingModule, PipesModule],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  exports: [
+
   ],
   bootstrap: [AppComponent]
 })

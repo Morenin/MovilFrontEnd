@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RestService } from '../../services/rest.service';
+import { Oferta } from '../../interfaces/Ofertas';
 
 @Component({
   selector: 'app-tab2',
@@ -7,17 +8,27 @@ import { RestService } from '../../services/rest.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  noticias: any;
+  ofertas: Oferta[] = [];
+  ciclos: any;
   constructor(public restService: RestService) {
-    this.obtenerNoticias();
+    this.obtenerOfertas();
+    this.obtenerCiclos();
   }
 
 
-  obtenerNoticias(){
-    this.restService.getArticles()
+  obtenerOfertas(){
+    this.restService.getOffers()
     .then(data => {
-      this.noticias = data;
-      console.log(this.noticias);
+      this.ofertas = data.data; 
     });
   }
+
+  obtenerCiclos(){
+    this.restService.getCicles()
+    .then(data => {
+      this.ciclos = data;
+      console.log(this.ciclos);
+    });
+  }
+
 }

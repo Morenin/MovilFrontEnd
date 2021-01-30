@@ -1,0 +1,23 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ oferta.headline }}</ion-card-title>
+    <ion-label>
+      <p class="ion-text-right">
+        
+        {{
+          oferta.date_max | date: "dd/MM/yy"
+        }}
+      </p>
+    </ion-label>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label *ngIf="esGrande == true">{{ oferta.description | truncate:100 }}
+       <a (click)="cambiar(oferta)" color="primary">ver más</a>
+    </ion-label>
+    <ion-label *ngIf="esGrande == false">{{ oferta.description  }} 
+    <a (click)="cambiar(oferta)" color="primary">ver menos</a>
+      
+    </ion-label>
+    
+  </ion-card-content>
+</ion-card>

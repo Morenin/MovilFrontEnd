@@ -9,7 +9,7 @@ import {Noticia } from '../../interfaces/Noticias';
 })
 export class Tab1Page {
 
-  noticias: any;
+  noticias:any;
   constructor(public restService: RestService) {
     this.obtenerNoticias();
   }

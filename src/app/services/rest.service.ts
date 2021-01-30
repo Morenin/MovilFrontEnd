@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { offers } from '../interfaces/Ofertas';
 
 
 @Injectable({
@@ -45,6 +44,7 @@ export class RestService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token),
       })
         .subscribe(data => {
+          console.log(data);
           resolve(data);
         }, err => {
           console.log(err);
@@ -57,6 +57,17 @@ export class RestService {
   getArticles() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + '/articles')
+        .subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+    });
+  }
+
+  getCicles() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/cicles')
         .subscribe(data => {
           resolve(data);
         }, err => {

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonList } from '@ionic/angular';
 import { RestService } from '../../services/rest.service';
 
-
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
