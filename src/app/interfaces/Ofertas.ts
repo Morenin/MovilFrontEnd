@@ -1,3 +1,4 @@
+
 export interface offers{
     success: boolean,
     data: Data[],
@@ -9,7 +10,7 @@ export interface Data{
     headline: string,
     description: string,
     cicle_id: number,
-    date_max: Date,
+    cicle_name: string,
     num_candidates: number,
 }
 
