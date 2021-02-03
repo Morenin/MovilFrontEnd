@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { RestService } from 'src/app/services/rest.service';
-import { Data } from '../../interfaces/Ofertas';
+import { Oferta } from '../../interfaces/Ofertas';
 
 @Component({
   selector: 'app-tab4',
@@ -12,7 +12,7 @@ import { Data } from '../../interfaces/Ofertas';
 })
 export class Tab4Page{
   ofertas:any;
-  offer: Data[];
+  offer: Oferta[];
   valor: any;
   cont: number=0;
   constructor(public restService:RestService) {

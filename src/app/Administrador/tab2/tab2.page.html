@@ -6,8 +6,9 @@
 
 <ion-content [fullscreen]="true">
   <ion-list *ngIf="ofertas">
-    
-      <ion-button (click)="generarPDF(ofertas.data)">Generar PDF</ion-button>
-    
+    <ion-button (click)="generarPDFoferta(ofertas.data)">Generar PDF</ion-button>
+  </ion-list>
+  <ion-list *ngIf="usuarios">
+    <ion-button (click)="generarPDFusuarios(usuarios.data,ofertas.data)">Generar PDF2</ion-button>
   </ion-list>
 </ion-content>
