@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Descripción de la oferta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="text-align: center;">
+    <h2>{{oferta.headline}}</h2>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre del ciclo: </ion-label>
+      <p>{{oferta.cicle_name}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha límite: </ion-label>
+      <p>{{oferta.date_max |date:"MM/dd/yy"}}</p>
+    </ion-item>
+    <ion-item>
+      <p>{{oferta.description}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

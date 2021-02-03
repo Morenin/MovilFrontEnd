@@ -1,0 +1,40 @@
+<ion-card>
+
+  <ion-item lines="none">
+    <img [src]="imagen + oferta.cicle_name + '.png' | lowercase" class="ion-icon"/>
+    <h2 style="font-size: 20px;">{{ oferta.headline }}</h2>
+  </ion-item>
+  <p  class="ion-text-right" style="margin-right: 15px;">
+    <b>{{ oferta.cicle_name }}</b>
+  </p>
+  
+ <ion-grid>
+    <ion-row>
+    <ion-col col-size="3">
+      </ion-col>
+      <ion-col col-size="3">
+        <ion-item >
+            <ion-button fill="clear" (click)="presentModal()">
+              <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
+            </ion-button>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-size="3">
+        <ion-item *ngIf="tipo">
+          <ion-button expand="block" fill="clear" (click)="aplicarOferta()">
+            <ion-icon slot="icon-only" name="checkmark-done-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item *ngIf="!tipo">
+          <ion-button expand="block" fill="clear" (click)="aplicarOferta()">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-col>
+      <ion-col col-size="3">
+      </ion-col>
+    
+    </ion-row>
+   </ion-grid>
+</ion-card>

@@ -1,4 +1,3 @@
-
 <ion-grid fixed>
     <ion-row>
       <ion-col
@@ -7,9 +6,9 @@
         size-md="2"
         size-sm="6"
         size-xs="12"
-        *ngFor="let noticia of noticias"
+        *ngFor="let oferta of ofertas" 
 >
-        <app-noticia [noticia]="noticia"></app-noticia>
+        <app-oferta [oferta]="oferta" [tipo]="tipo"></app-oferta>
       </ion-col>
     </ion-row>
   </ion-grid>

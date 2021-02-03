@@ -8,8 +8,26 @@ import { Noticia } from '../../interfaces/Noticias';
 })
 export class NoticiaComponent implements OnInit {
   @Input() noticia: Noticia;
-  constructor() { }
+  imagen = "/assets/icon/";
+  esGrande: boolean;
+  constructor() { 
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.comprobarTamaño(this.noticia);
+  }
+
+  comprobarTamaño(noticia: Noticia){
+    if(noticia.description.length>100){
+      this.esGrande=true;
+    }
+    else{
+      this.esGrande=false;
+    }
+  }
+
+  cambiar(){
+    this.esGrande=!this.esGrande;
+  }
 
 }

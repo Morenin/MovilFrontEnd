@@ -3,20 +3,27 @@ import { CommonModule } from '@angular/common';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticia/noticia.component';
 import { IonicModule } from '@ionic/angular';
-
+import { PipesModule } from '../pipes/pipes.module';
+import { OfertasComponent } from './ofertas/ofertas.component';
+import { OfertaComponent } from './oferta/oferta.component';
 
 
 @NgModule({
   declarations: [
     NoticiasComponent,
-    NoticiaComponent
+    NoticiaComponent,
+    OfertasComponent,
+    OfertaComponent
+    ,
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    PipesModule
   ],
   exports: [
-    NoticiasComponent
+    NoticiasComponent,
+    OfertasComponent,
   ]
 })
 export class ComponentsModule { }
