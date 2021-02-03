@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-list #lista  *ngIf="usuarios">
   <ion-item-sliding  *ngFor="let usuario of usuarios.data " >
-    <ion-item *ngIf="usuario.type == 'client'">
+    <ion-item *ngIf="usuario.type == 'client' && usuario.actived=='0'">
       <ion-label >
         <h2>{{usuario.name}}</h2>
       </ion-label>

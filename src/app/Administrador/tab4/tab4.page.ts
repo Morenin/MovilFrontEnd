@@ -1,34 +1,54 @@
+
 import { Component, OnInit } from '@angular/core';
-import { ChartDataSets } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
+import { RestService } from 'src/app/services/rest.service';
+import { Data } from '../../interfaces/Ofertas';
 
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
   styleUrls: ['./tab4.page.scss'],
 })
-export class Tab4Page implements OnInit {
+export class Tab4Page{
+  ofertas:any;
+  offer: Data[];
+  valor: any;
+  cont: number=0;
+  constructor(public restService:RestService) {
+    this.BuscarOfertas();
+   }
 
-  public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-  ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions = {
+  BuscarOfertas() {
+    this.restService.getOffers().then(data=>{
+      this.ofertas=data;
+      console.log(this.ofertas)
+      
+    });
+  }
+  barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public lineChartColors: Color[] = [
-    {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
-    },
-  ];
-  public lineChartLegend = true;
-  public lineChartType = 'line';
-  public lineChartPlugins = [];
-  
-  constructor() { }
+  barChartLabels: Label[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  barChartType: ChartType = 'bar';
+  barChartLegend = true;
+  barChartPlugins = [];
 
-  ngOnInit() {
+  barChartData: ChartDataSets[] = [
+    { data: [], label:  ''}
+  ];
+  seleccion(offer){
+    console.log(this.valor);
+    console.log(offer);
+    this.offer=offer;
+    for(var x=0;x<this.offer.length;x++){
+      if(this.offer[x].cicle_name==this.valor){
+        this.cont++;
+      }
+    }
+    console.log(this.cont);
+    
+    this.barChartData.push({data: [this.cont],label:'ofertas'});
   }
 
 }

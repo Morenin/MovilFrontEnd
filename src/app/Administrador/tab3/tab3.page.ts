@@ -21,8 +21,8 @@ export class Tab3Page {
       console.log(this.ofertas)
     });
   }
-  borrarSitio(id){
-    let alert = this.alertCtrl.create({
+  async borrarSitio(id){
+    let alert = await this.alertCtrl.create({
       header: 'Confirmar borrado',
       message: '¿Estás seguro de que deseas eliminar este sitio?',
       buttons: [
@@ -30,16 +30,18 @@ export class Tab3Page {
           text: 'No',
           role: 'cancel',
           handler: () => {
-             }
+          }
         },
         {
           text: 'Si',
           handler: () => {
-           }
+            console.log(id);
+            this.restService.borraroferta(id);
+          }
         }
       ]
     });
-    
+    await alert.present();
   }
   
 }
