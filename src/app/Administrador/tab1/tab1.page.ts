@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RestService } from 'src/app/services/rest.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -8,7 +9,7 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class Tab1Page {
   usuarios:any;
-  constructor(public restService:RestService) {
+  constructor(public restService:RestService,public  alertCtrl:AlertController) {
     this.buscarUsuarios();
   }
   buscarUsuarios(){
@@ -17,7 +18,12 @@ export class Tab1Page {
       console.log(this.usuarios)
     });
   }
-  activarUsuario(id){
+  async activarUsuario(id){
     this.restService.activarusuario(id);
+    let alert =this.alertCtrl.create({
+      header: 'Usuario activado correctamente',
+      buttons: ['Aceptar']
+    });
+    (await alert).present();
   }
 }

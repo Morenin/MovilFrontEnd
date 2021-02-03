@@ -35,6 +35,7 @@ export class Tab3Page {
         {
           text: 'Si',
           handler: () => {
+            console.log(id);
             this.restService.borraroferta(id);
           }
         }
