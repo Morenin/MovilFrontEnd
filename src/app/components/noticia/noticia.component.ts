@@ -11,8 +11,6 @@ export class NoticiaComponent implements OnInit {
   imagen = "/assets/icon/";
   esGrande: boolean;
   constructor() { 
-    
-    console.log(this.noticia);
   }
 
   ngOnInit() {

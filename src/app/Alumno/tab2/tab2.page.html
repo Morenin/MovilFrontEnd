@@ -1,13 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 2 </ion-title>
+    <ion-title> Ofertas no aplicadas </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-  <span *ngIf="ofertas">
-    <span *ngIf="ciclos">
-      <app-ofertas [ofertas]="ofertas.data" [ciclos]="ciclos.data"></app-ofertas>
-    </span>
+  <ion-item>
+    <ion-select (ionChange)="filtro($event)">
+      <ion-select-option selected="true"  value="0">Todos</ion-select-option>
+      <ion-select-option *ngFor="let ciclo of ciclos" [value]="ciclo.id">{{ciclo.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <span>
+      <app-ofertas [ofertas]="ofertas" [tipo]="true"></app-ofertas>
   </span>
 </ion-content>

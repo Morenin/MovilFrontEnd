@@ -1,23 +1,40 @@
 <ion-card>
-  <ion-card-header>
-    <ion-card-title>{{ oferta.headline }}</ion-card-title>
-    <ion-label>
-      <p class="ion-text-right">
-        
-        {{
-          oferta.date_max | date: "dd/MM/yy"
-        }}
-      </p>
-    </ion-label>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-label *ngIf="esGrande == true">{{ oferta.description | truncate:100 }}
-       <a (click)="cambiar(oferta)" color="primary">ver más</a>
-    </ion-label>
-    <ion-label *ngIf="esGrande == false">{{ oferta.description  }} 
-    <a (click)="cambiar(oferta)" color="primary">ver menos</a>
-      
-    </ion-label>
+
+  <ion-item lines="none">
+    <img [src]="imagen + oferta.cicle_name + '.png' | lowercase" class="ion-icon"/>
+    <h2 style="font-size: 20px;">{{ oferta.headline }}</h2>
+  </ion-item>
+  <p  class="ion-text-right" style="margin-right: 15px;">
+    <b>{{ oferta.cicle_name }}</b>
+  </p>
+  
+ <ion-grid>
+    <ion-row>
+    <ion-col col-size="3">
+      </ion-col>
+      <ion-col col-size="3">
+        <ion-item >
+            <ion-button fill="clear" (click)="presentModal()">
+              <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
+            </ion-button>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-size="3">
+        <ion-item *ngIf="tipo">
+          <ion-button expand="block" fill="clear" (click)="aplicarOferta()">
+            <ion-icon slot="icon-only" name="checkmark-done-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item *ngIf="!tipo">
+          <ion-button expand="block" fill="clear" (click)="aplicarOferta()">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-col>
+      <ion-col col-size="3">
+      </ion-col>
     
-  </ion-card-content>
+    </ion-row>
+   </ion-grid>
 </ion-card>

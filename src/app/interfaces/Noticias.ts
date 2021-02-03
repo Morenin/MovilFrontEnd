@@ -1,10 +1,3 @@
-export interface RespuestaN{
-    success: boolean,
-    data: Noticia[],
-    message: string,
-
-}
-
 
 export interface Noticia{
     id: number,

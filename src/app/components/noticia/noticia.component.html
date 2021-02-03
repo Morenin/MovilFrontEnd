@@ -1,24 +1,23 @@
 <ion-card>
-  <ion-card-header>
-    <img  [src]="imagen + noticia.image" />
-    <ion-card-title>{{ noticia.title }}</ion-card-title>
+
+  <ion-item lines="none">
+    <img [src]="imagen + noticia.image" class="ion-icon"/>
+    <h2 style="font-size: 15px;">{{ noticia.title }}</h2>
+  </ion-item>
     <ion-label>
-      <p class="ion-text-right">
-        <b class="ion-text-left">{{ noticia.cicle_name }}</b>
-        {{
-          noticia.created_at | date: "dd/MM/yy"
-        }}
+      <p  class="ion-text-right"  style="margin-right: 15px;">
+        <b style="margin-right: 140px;">{{ noticia.cicle_name }}</b>
+        <span class="text-right">{{ noticia.created_at | date: "dd/MM/yy" }}</span>
       </p>
     </ion-label>
-  </ion-card-header>
   <ion-card-content>
-    <ion-label *ngIf="esGrande == true">{{ noticia.description | truncate:100 }}
-       <a (click)="cambiar(noticia)" color="primary">ver más</a>
+    <ion-label *ngIf="esGrande == true"
+      >{{ noticia.description | truncate: 100 }}
+      <a (click)="cambiar(noticia)" color="primary">ver más</a>
     </ion-label>
-    <ion-label *ngIf="esGrande == false">{{ noticia.description  }} 
-    <a (click)="cambiar(noticia)" color="primary">ver menos</a>
-      
+    <ion-label *ngIf="esGrande == false"
+      >{{ noticia.description }}
+      <a (click)="cambiar(noticia)" color="primary">ver menos</a>
     </ion-label>
-    
   </ion-card-content>
 </ion-card>

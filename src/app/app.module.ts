@@ -11,13 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PipesModule } from './pipes/pipes.module';
 import { ChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(),HttpClientModule, AppRoutingModule, PipesModule,ChartsModule,],
+  imports: [BrowserModule, IonicModule.forRoot(),HttpClientModule, AppRoutingModule, PipesModule,ChartsModule,FormsModule],
   providers: [
     StatusBar,
     SplashScreen,

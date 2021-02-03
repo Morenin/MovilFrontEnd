@@ -8,13 +8,13 @@ import { OfertasComponent } from './ofertas/ofertas.component';
 import { OfertaComponent } from './oferta/oferta.component';
 
 
-
 @NgModule({
   declarations: [
     NoticiasComponent,
     NoticiaComponent,
     OfertasComponent,
     OfertaComponent
+    ,
   ],
   imports: [
     CommonModule,
@@ -23,7 +23,7 @@ import { OfertaComponent } from './oferta/oferta.component';
   ],
   exports: [
     NoticiasComponent,
-    OfertasComponent
+    OfertasComponent,
   ]
 })
 export class ComponentsModule { }

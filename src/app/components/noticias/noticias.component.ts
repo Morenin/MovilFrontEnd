@@ -1,27 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Noticia } from '../../interfaces/Noticias';
+import { Cicle } from '../../interfaces/Ciclos';
+import { RestService } from '../../services/rest.service';
 @Component({
   selector: 'app-noticias',
   templateUrl: './noticias.component.html',
   styleUrls: ['./noticias.component.scss'],
 })
 export class NoticiasComponent implements OnInit {
-  @Input() noticias: Noticia[];
-  constructor() {
+  @Input() noticias: Noticia[] = [];
+  @Input() ciclos: Cicle[] = [];
+  
+  constructor(public restService: RestService) {
     }
 
   ngOnInit() {
-    if(this.noticias){
-      this.noticias= this.ordenar(this.noticias);
-    }
+    
   }
-
-  ordenar = (noticias: Noticia[]) =>
-    noticias.sort((noticiaA: Noticia, noticiaB: Noticia)=>
-    {
-      if(noticiaA > noticiaB) return 1;
-      if(noticiaA < noticiaB) return 0;
-      return 0
-  });
 
 }

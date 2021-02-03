@@ -1,6 +1,5 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Oferta } from '../../interfaces/Ofertas';
-import { Cicle } from '../../interfaces/Ciclos';
 
 @Component({
   selector: 'app-ofertas',
@@ -8,10 +7,14 @@ import { Cicle } from '../../interfaces/Ciclos';
   styleUrls: ['./ofertas.component.scss'],
 })
 export class OfertasComponent implements OnInit {
-  @Input() ofertas: any[];
-  @Input() ciclos: Cicle[];
+  @Input() ofertas: Oferta[] = [];
+  @Input() tipo: boolean; 
   constructor() { }
 
   ngOnInit() {}
 
+
+  quitarOferta(offer_id){
+    this.ofertas = this.ofertas.filter(oferta => oferta.id != offer_id);
+  }
 }

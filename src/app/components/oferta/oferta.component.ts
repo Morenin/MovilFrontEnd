@@ -1,6 +1,9 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IonRouterOutlet, ModalController } from '@ionic/angular';
 import { Oferta } from '../../interfaces/Ofertas';
-import { Cicle } from '../../interfaces/Ciclos';
+import { InfoPage } from '../../Alumno/info/info.page';
+import { RestService } from '../../services/rest.service';
+import { OfertasComponent } from '../ofertas/ofertas.component';
 
 @Component({
   selector: 'app-oferta',
@@ -9,16 +12,37 @@ import { Cicle } from '../../interfaces/Ciclos';
 })
 export class OfertaComponent implements OnInit {
   @Input() oferta:Oferta;
-  @Input() ciclos:Cicle [] = [];
-  ciclo:Cicle;
-  constructor() { 
-    this.ciclo=this.ciclos.find(this.esCiclo);
+  @Input() tipo: boolean;
+  imagen = "/assets/icon/";
+  constructor(private routerOutlet: IonRouterOutlet,
+    public modalController: ModalController, 
+    public restService: RestService, 
+    public ofertasComponent:OfertasComponent) 
+  { }
+
+  ngOnInit() {}
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: InfoPage,
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl,
+      componentProps: {
+        'oferta':this.oferta
+      }
+    });
+    return await modal.present();
   }
 
-  ngOnInit() {
+  aplicarOferta(){
+    if(this.tipo){
+      this.restService.aplicarOferta(this.oferta.id)
+      this.ofertasComponent.quitarOferta(this.oferta.id);
+    }else{
+      this.restService.quitarOfertaAplicada(this.oferta.id)
+      this.ofertasComponent.quitarOferta(this.oferta.id);
+    }
+    
   }
 
-  esCiclo(ciclo: Cicle){
-    // return ciclo.id === this.oferta.cicle_id;
-  }
 }
