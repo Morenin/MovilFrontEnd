@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { RestService } from '../../services/rest.service';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Data } from '../../interfaces/Ofertas';
+import { Data } from 'src/app/interfaces/Ofertas';
+
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -15,10 +16,11 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class Tab2Page {
   pdfObj: any;
   ofertas: any;
-  ofers: Data[];
-  
+  usuarios: any;
+  ofers:Data[];
   constructor(public restService:RestService) {
     this.BuscarOfertas();
+    this.BuscarUsuario();
   }
   
   BuscarOfertas(){
@@ -27,27 +29,30 @@ export class Tab2Page {
       console.log(this.ofertas)
     });
   }
+
+  BuscarUsuario(){
+    this.restService.getUsuarios().then(data=>{
+      this.usuarios=data;
+      console.log(this.usuarios)
+    });
+  }
   generarPDF(ofer){
     console.log(ofer);
     this.ofers=ofer;
     console.log(this.ofers);
-    
-    var body=this.selecionar();
+    var body=this.pdfofertas();
     console.log(body);
     let docDefinition={
       content:[
         {table: {
-         
           body: body,
         }}
-    ]
-    
+    ]  
   };
     this.pdfObj=pdfMake.createPdf(docDefinition);
     this.pdfObj.download();
-    
   }
-  selecionar(){
+  pdfofertas(){
     var headers={
        top:{
          col_1:{text:"Oferta" , alignment: 'center'},
