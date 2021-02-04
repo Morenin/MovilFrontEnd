@@ -38,6 +38,7 @@ export class Tab4Page{
     { data: [], label:  ''}
   ];
   seleccion(offer){
+    
     console.log(this.valor);
     console.log(offer);
     this.offer=offer;
@@ -46,8 +47,9 @@ export class Tab4Page{
         this.cont++;
       }
     }
-    console.log(this.cont);
     
+    console.log(this.cont);
+    this.cont=0;
     this.barChartData.push({data: [this.cont],label:'ofertas'});
   }
 

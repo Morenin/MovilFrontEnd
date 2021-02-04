@@ -20,6 +20,8 @@ export class Tab2Page {
   usuarios:any;
   ofers:Oferta[];
   user:User[];
+  prueba:any;
+  
   constructor(public restService:RestService) {
     this.BuscarOfertas();
     this.BuscarUsuario();
@@ -38,6 +40,17 @@ export class Tab2Page {
       console.log(this.usuarios)
     });
   }
+  cogeroferta(id){
+    this.restService.getOffersApplied(id).then(data=>{
+      this.ofers=data.data;
+      this.ofers.forEach(x =>{
+        console.log(x.headline);
+        this.prueba=x.headline; 
+        
+    })});
+    console.log(this.prueba)
+    }
+
   generarPDFoferta(ofer){
     console.log(ofer);
     this.ofers=ofer;
@@ -52,7 +65,7 @@ export class Tab2Page {
     ]  
   };
     this.pdfObj=pdfMake.createPdf(docDefinition);
-    this.pdfObj.download();
+    // this.pdfObj.download();
   }
   pdfofertas(){
     var headers={
@@ -89,10 +102,10 @@ export class Tab2Page {
   generarPDFusuarios(user,offer){
     this.user=user;
     this.ofers=offer;
-    console.log(this.user);
-    console.log(this.ofers);
+    // console.log(this.user);
+    // console.log(this.ofers);
     var body=this.pdfusuarios();
-    console.log(body);
+    
     let docDefinition={
       content:[
         {table: {
@@ -104,6 +117,8 @@ export class Tab2Page {
     // this.pdfObj.download();
   }
   pdfusuarios(){
+    var prueba=this.prueba;
+    console.log(prueba);
     var headers={
       
       top:{
@@ -111,7 +126,7 @@ export class Tab2Page {
         col_2:{text:"Apellido", alignment: 'center'},
         col_3:{text:"Email",alignment:'center'},
         col_4:{text:"Nombre del ciclo",alignment:'center'},
-        // col_5:{text:"Oferta",alignment:'center'},
+        col_5:{text:"Oferta",alignment:'center'},
       }
    }
    var rows=this.user;
@@ -125,7 +140,7 @@ export class Tab2Page {
        row.push(header.col_2);
        row.push(header.col_3);
        row.push(header.col_4);
-      //  row.push(header.col_5);
+       row.push(header.col_5);
        body.push(row);
      }
    }
@@ -138,16 +153,20 @@ export class Tab2Page {
         row.push({text: data.email});
         row.push({text: data.cicle_name});
         var id=data.id;
-        this.restService.getOffersApplied(id).then(datax=>{
-          this.ofers=datax.data;
-          console.log(datax);
-        })
-
+        this.cogeroferta(id);
+        if(prueba!==undefined){
+          row.push({text: prueba});
+        }else{
+          row.push({text: 'nada'});
+        }
         body.push(row);
     }
    }
    return body;
   }
+
+  
+  
 }
 
 

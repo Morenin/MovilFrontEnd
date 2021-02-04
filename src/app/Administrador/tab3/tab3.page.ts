@@ -24,7 +24,7 @@ export class Tab3Page {
   async borrarSitio(id){
     let alert = await this.alertCtrl.create({
       header: 'Confirmar borrado',
-      message: '¿Estás seguro de que deseas eliminar este sitio?',
+      message: '¿Estás seguro de que deseas borrar esta oferta?',
       buttons: [
         {
           text: 'No',
@@ -35,7 +35,6 @@ export class Tab3Page {
         {
           text: 'Si',
           handler: () => {
-            console.log(id);
             this.restService.borraroferta(id);
           }
         }
