@@ -4,6 +4,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { Oferta } from 'src/app/interfaces/Ofertas';
 import { User } from 'src/app/interfaces/Usuarios';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 
@@ -22,7 +23,7 @@ export class Tab2Page {
   user:User[];
   prueba:any;
   
-  constructor(public restService:RestService) {
+  constructor(public restService:RestService,public emailComposer:EmailComposer) {
     this.BuscarOfertas();
     this.BuscarUsuario();
   }
@@ -40,17 +41,6 @@ export class Tab2Page {
       console.log(this.usuarios)
     });
   }
-  cogeroferta(id){
-    this.restService.getOffersApplied(id).then(data=>{
-      this.ofers=data.data;
-      this.ofers.forEach(x =>{
-        console.log(x.headline);
-        this.prueba=x.headline; 
-        
-    })});
-    console.log(this.prueba)
-    }
-
   generarPDFoferta(ofer){
     console.log(ofer);
     this.ofers=ofer;
@@ -65,6 +55,7 @@ export class Tab2Page {
     ]  
   };
     this.pdfObj=pdfMake.createPdf(docDefinition);
+    this.mandarCorreo();
     // this.pdfObj.download();
   }
   pdfofertas(){
@@ -153,7 +144,7 @@ export class Tab2Page {
         row.push({text: data.email});
         row.push({text: data.cicle_name});
         var id=data.id;
-        this.cogeroferta(id);
+        
         if(prueba!==undefined){
           row.push({text: prueba});
         }else{
@@ -164,9 +155,21 @@ export class Tab2Page {
    }
    return body;
   }
-
+  mandarCorreo(){
+      let mail={
+        to: 'fjmoreno22@gmail.com',
+        cc: 'admin@admin.com',
+        subject: 'prueba',
+        body: 'espero que funicone',
+        isHtml: true,
+      }
+      this.emailComposer.open(mail);
+    }
   
   
 }
+  
+  
+
 
 

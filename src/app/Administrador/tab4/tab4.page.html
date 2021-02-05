@@ -9,7 +9,7 @@
   <ion-item>
     <ion-label>Nombre del ciclo</ion-label>
     <ion-select placeholder="Selecciona" [(ngModel)]="valor" *ngIf="ofertas" (ionChange)=seleccion(ofertas.data) >
-      <ion-select-option  *ngFor="let oferta of ofertas.data " value={{oferta.cicle_name}} >
+      <ion-select-option  *ngFor="let oferta of ofertas.data" value={{oferta.cicle_name}} >
       {{oferta.cicle_name}}
       </ion-select-option >
     </ion-select>

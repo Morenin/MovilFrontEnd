@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { PipesModule } from './pipes/pipes.module';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     StatusBar,
     SplashScreen,
+    EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [
