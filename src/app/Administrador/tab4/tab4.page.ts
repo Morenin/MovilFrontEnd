@@ -11,6 +11,7 @@ import { Oferta } from '../../interfaces/Ofertas';
 })
 export class Tab4Page{
   ofertas:any;
+  ciclos:any;
   offer: Oferta[];
   prueba:any;
   valor: any;
@@ -31,6 +32,7 @@ export class Tab4Page{
   Diciembre:number=0;
   constructor(public restService:RestService) {
     this.BuscarOfertas();
+    this.BuscarCiclos();
    }
 
   BuscarOfertas() {
@@ -38,6 +40,12 @@ export class Tab4Page{
       this.ofertas=data;
       console.log(this.ofertas);
     });
+  }
+  BuscarCiclos(){
+    this.restService.getCicles().then(data=>{
+      this.ciclos=data;
+      console.log(this.ciclos);
+    })
   }
   barChartOptions: ChartOptions = {
     responsive: true,
@@ -50,13 +58,15 @@ export class Tab4Page{
   barChartData: ChartDataSets[] = [
     { data: [], label:  ''}
   ];
-  seleccion(offer){
-    // const d=new Date().getMonth();
-    var d=4;
-    console.log(this.mes(d));
+  seleccion(){
+    var d=new Date().getMonth();
+    // console.log(new Date().getMonth());
+    // var d=2;
+    
     console.log(this.valor);
-    console.log(offer);
-    this.offer=offer;
+    
+    this.offer=this.ofertas.data;
+    console.log(this.offer);
     this.offer.forEach(x=>{
       if(this.valor==x.cicle_name){
         this.fecha.push(x.date_max.split('-'))}});
@@ -67,11 +77,11 @@ export class Tab4Page{
     console.log(this.fechatotal);
     for(var y=0;y<this.fechatotal.length;y++){
       this.contarofertas(this.fechatotal[y])
-    }
-    console.log(this.Mayo);
+      console.log(this.fechatotal[y]);
+    };
     this.barChartLabels=[this.mes(d-5),this.mes(d-4),this.mes(d-3),this.mes(d-2),this.mes(d-1),this.mes(d)];
     this.barChartLegend=true;
-    this.hacerGrafica(this.mes(d));
+    this.hacerGrafica(this.mes(d+1));
     this.fecha=[];
     this.fechatotal=[];
     this.Enero=0;
@@ -136,6 +146,7 @@ export class Tab4Page{
     } 
   }
   contarofertas(x){
+    
     switch(x){
       case '01':
         this.Enero++;
@@ -176,7 +187,7 @@ export class Tab4Page{
     }
   }
   hacerGrafica(x){
-
+    
     switch(x){
       case 'Enero':
         return this.barChartData=[{data:[this.Agosto,this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre,this.Enero],label:'oferta'}];
@@ -193,15 +204,15 @@ export class Tab4Page{
       case 'Julio':
         return this.barChartData=[{data:[this.Febrero,this.Marzo,this.Abril,this.Mayo,this.Junio,this.Julio],label:'oferta'}];
       case 'Agosto':
-        return this.barChartData=[{data:[this.Marzo,this.Abril,this.Mayo,this.Junio,this.Julio,this.Julio],label:'oferta'}];
+        return this.barChartData=[{data:[this.Marzo,this.Abril,this.Mayo,this.Junio,this.Julio,this.Agosto],label:'oferta'}];
       case 'Septiembre':
-        return this.barChartData=[{data:[this.Abril,this.Mayo,this.Junio,this.Julio,this.Julio,this.Agosto],label:'oferta'}];
+        return this.barChartData=[{data:[this.Abril,this.Mayo,this.Junio,this.Julio,this.Agosto,this.Septiembre],label:'oferta'}];
       case 'Octubre':
-        return this.barChartData=[{data:[this.Mayo,this.Junio,this.Julio,this.Julio,this.Agosto,this.Septiembre],label:'oferta'}];
+        return this.barChartData=[{data:[this.Mayo,this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre],label:'oferta'}];
       case 'Noviembre':
-        return this.barChartData=[{data:[this.Junio,this.Julio,this.Julio,this.Agosto,this.Septiembre,this.Noviembre],label:'oferta'}];
+        return this.barChartData=[{data:[this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre],label:'oferta'}];
       case 'Noviembre':
-        return this.barChartData=[{data:[this.Julio,this.Agosto,this.Septiembre,this.Noviembre,this.Diciembre],label:'oferta'}];
+        return this.barChartData=[{data:[this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre],label:'oferta'}];
       default:
         break;
       }
