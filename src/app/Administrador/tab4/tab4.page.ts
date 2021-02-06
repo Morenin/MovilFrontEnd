@@ -50,7 +50,7 @@ export class Tab4Page{
   barChartOptions: ChartOptions = {
     responsive: true,
   };
-  barChartLabels: Label[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  barChartLabels: Label[] = ['seleciona un ciclo'];
   barChartType: ChartType = 'bar';
   barChartLegend = false;
   barChartPlugins = [];
@@ -81,7 +81,7 @@ export class Tab4Page{
     };
     this.barChartLabels=[this.mes(d-5),this.mes(d-4),this.mes(d-3),this.mes(d-2),this.mes(d-1),this.mes(d)];
     this.barChartLegend=true;
-    this.hacerGrafica(this.mes(d+1));
+    this.hacerGrafica(this.mes(d));
     this.fecha=[];
     this.fechatotal=[];
     this.Enero=0;
@@ -187,11 +187,10 @@ export class Tab4Page{
     }
   }
   hacerGrafica(x){
-    
     switch(x){
       case 'Enero':
         return this.barChartData=[{data:[this.Agosto,this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre,this.Enero],label:'oferta'}];
-      case 'Febero':
+      case 'Febrero':
         return this.barChartData=[{data:[this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre,this.Enero,this.Febrero],label:'oferta'}];
       case 'Marzo':
         return this.barChartData=[{data:[this.Octubre,this.Noviembre,this.Diciembre,this.Enero,this.Febrero,this.Marzo],label:'oferta'}];
@@ -211,7 +210,7 @@ export class Tab4Page{
         return this.barChartData=[{data:[this.Mayo,this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre],label:'oferta'}];
       case 'Noviembre':
         return this.barChartData=[{data:[this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre],label:'oferta'}];
-      case 'Noviembre':
+      case 'Diciembre':
         return this.barChartData=[{data:[this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre],label:'oferta'}];
       default:
         break;
