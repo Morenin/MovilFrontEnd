@@ -1,13 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Ofertas </ion-title>
+    <ion-title> Borrar Ofertas </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  
   <ion-list #lista  *ngIf="ofertas">
-  <ion-item-sliding  *ngFor="let oferta of ofertas.data ">
-    <ion-item >
-      <ion-label>
+  <ion-item-sliding  *ngFor="let oferta of ofertas.data " >
+    <ion-item *ngIf="oferta.deleted =='0'">
+      <ion-label >
         <h2>{{oferta.headline}}</h2>
       </ion-label>
     </ion-item>

@@ -38,13 +38,11 @@ export class Tab4Page{
   BuscarOfertas() {
     this.restService.getOffers().then(data=>{
       this.ofertas=data;
-      console.log(this.ofertas);
     });
   }
   BuscarCiclos(){
     this.restService.getCicles().then(data=>{
       this.ciclos=data;
-      console.log(this.ciclos);
     })
   }
   barChartOptions: ChartOptions = {
@@ -60,24 +58,16 @@ export class Tab4Page{
   ];
   seleccion(){
     var d=new Date().getMonth();
-    // console.log(new Date().getMonth());
-    // var d=2;
-    
-    console.log(this.valor);
-    
     this.offer=this.ofertas.data;
-    console.log(this.offer);
     this.offer.forEach(x=>{
       if(this.valor==x.cicle_name){
         this.fecha.push(x.date_max.split('-'))}});
-    console.log(this.fecha) 
     this.fecha.forEach(element => {
       this.fechatotal.push(element[1])
     });
     console.log(this.fechatotal);
     for(var y=0;y<this.fechatotal.length;y++){
       this.contarofertas(this.fechatotal[y])
-      console.log(this.fechatotal[y]);
     };
     this.barChartLabels=[this.mes(d-5),this.mes(d-4),this.mes(d-3),this.mes(d-2),this.mes(d-1),this.mes(d)];
     this.barChartLegend=true;
@@ -191,27 +181,27 @@ export class Tab4Page{
       case 'Enero':
         return this.barChartData=[{data:[this.Agosto,this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre,this.Enero],label:'oferta'}];
       case 'Febrero':
-        return this.barChartData=[{data:[this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre,this.Enero,this.Febrero],label:'oferta'}];
+        return this.barChartData=[{data:[this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre,this.Enero,this.Febrero],label:'ofertas creada'}];
       case 'Marzo':
-        return this.barChartData=[{data:[this.Octubre,this.Noviembre,this.Diciembre,this.Enero,this.Febrero,this.Marzo],label:'oferta'}];
+        return this.barChartData=[{data:[this.Octubre,this.Noviembre,this.Diciembre,this.Enero,this.Febrero,this.Marzo],label:'ofertas creada'}];
       case 'Abril':
-        return this.barChartData=[{data:[this.Noviembre,this.Diciembre,this.Enero,this.Febrero,this.Marzo,this.Abril],label:'oferta'}];
+        return this.barChartData=[{data:[this.Noviembre,this.Diciembre,this.Enero,this.Febrero,this.Marzo,this.Abril],label:'ofertas creada'}];
       case 'Mayo':
-        return this.barChartData=[{data:[this.Diciembre,this.Enero,this.Febrero,this.Marzo,this.Abril,this.Mayo],label:'oferta'}];
+        return this.barChartData=[{data:[this.Diciembre,this.Enero,this.Febrero,this.Marzo,this.Abril,this.Mayo],label:'ofertas creada'}];
       case 'Junio':
-        return this.barChartData=[{data:[this.Enero,this.Febrero,this.Marzo,this.Abril,this.Mayo,this.Junio],label:'oferta'}];
+        return this.barChartData=[{data:[this.Enero,this.Febrero,this.Marzo,this.Abril,this.Mayo,this.Junio],label:'ofertas creada'}];
       case 'Julio':
-        return this.barChartData=[{data:[this.Febrero,this.Marzo,this.Abril,this.Mayo,this.Junio,this.Julio],label:'oferta'}];
+        return this.barChartData=[{data:[this.Febrero,this.Marzo,this.Abril,this.Mayo,this.Junio,this.Julio],label:'ofertas creada'}];
       case 'Agosto':
-        return this.barChartData=[{data:[this.Marzo,this.Abril,this.Mayo,this.Junio,this.Julio,this.Agosto],label:'oferta'}];
+        return this.barChartData=[{data:[this.Marzo,this.Abril,this.Mayo,this.Junio,this.Julio,this.Agosto],label:'ofertas creada'}];
       case 'Septiembre':
-        return this.barChartData=[{data:[this.Abril,this.Mayo,this.Junio,this.Julio,this.Agosto,this.Septiembre],label:'oferta'}];
+        return this.barChartData=[{data:[this.Abril,this.Mayo,this.Junio,this.Julio,this.Agosto,this.Septiembre],label:'ofertas creada'}];
       case 'Octubre':
-        return this.barChartData=[{data:[this.Mayo,this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre],label:'oferta'}];
+        return this.barChartData=[{data:[this.Mayo,this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre],label:'ofertas creada'}];
       case 'Noviembre':
-        return this.barChartData=[{data:[this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre],label:'oferta'}];
+        return this.barChartData=[{data:[this.Junio,this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre],label:'ofertas creada'}];
       case 'Diciembre':
-        return this.barChartData=[{data:[this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre],label:'oferta'}];
+        return this.barChartData=[{data:[this.Julio,this.Agosto,this.Septiembre,this.Octubre,this.Noviembre,this.Diciembre],label:'ofertas creada'}];
       default:
         break;
       }

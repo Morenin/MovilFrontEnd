@@ -55,7 +55,7 @@ export class Tab2Page {
     ]  
   };
     this.pdfObj=pdfMake.createPdf(docDefinition);
-    this.mandarCorreo();
+    this.mandarCorreo(this.pdfObj);
     // this.pdfObj.download();
   }
   pdfofertas(){
@@ -106,6 +106,7 @@ export class Tab2Page {
   };
     this.pdfObj=pdfMake.createPdf(docDefinition);
     // this.pdfObj.download();
+    this.mandarCorreo(this.pdfObj);
   }
   pdfusuarios(){
     var prueba=this.prueba;
@@ -155,12 +156,15 @@ export class Tab2Page {
    }
    return body;
   }
-  mandarCorreo(){
+  mandarCorreo(correo){
       let mail={
         to: 'fjmoreno22@gmail.com',
         cc: 'admin@admin.com',
         subject: 'prueba',
         body: 'espero que funicone',
+        attachments:[
+          correo
+        ],
         isHtml: true,
       }
       this.emailComposer.open(mail);

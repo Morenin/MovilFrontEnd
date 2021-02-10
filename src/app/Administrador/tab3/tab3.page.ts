@@ -11,6 +11,7 @@ import { RestService } from '../../services/rest.service';
 export class Tab3Page {
   @ViewChild('lista',{static: true}) lista:IonList;
   ofertas:any;
+  is_filtered: boolean=true;
   constructor(public restService:RestService, public alertCtrl:AlertController) {
     this.buscarOfertas();
   }
@@ -18,7 +19,6 @@ export class Tab3Page {
   buscarOfertas(){
     this.restService.getOffers().then(data=>{
       this.ofertas=data;
-      console.log(this.ofertas)
     });
   }
   async borrarSitio(id){
@@ -36,6 +36,9 @@ export class Tab3Page {
           text: 'Si',
           handler: () => {
             this.restService.borraroferta(id);
+            if(this.is_filtered){
+              this.ofertas.data = this.ofertas.data.filter(oferta => oferta.id != id);
+            }
           }
         }
       ]
