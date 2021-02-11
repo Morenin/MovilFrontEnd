@@ -12,11 +12,11 @@ export class Tab3Page {
 
   ofertas: Oferta[] = [];
   ciclos: Cicle[] = [];
-
+  
   constructor(public restService: RestService) {}
 
   ionViewWillEnter(){
-    this.restService.getOffersApplied()
+    this.restService.getOffersApplied(1)
     .then(data => {
       console.log('ofertas ',data);
       this.ofertas = data.data; 

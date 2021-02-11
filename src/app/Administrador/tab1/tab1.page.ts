@@ -9,17 +9,23 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
   usuarios:any;
+  is_filtered: boolean=true;
+
   constructor(public restService:RestService,public  alertCtrl:AlertController) {
     this.buscarUsuarios();
   }
   buscarUsuarios(){
     this.restService.getUsuarios().then(data=>{
       this.usuarios=data;
-      console.log(this.usuarios)
     });
   }
   async activarUsuario(id){
     this.restService.activarusuario(id);
+    
+    if(this.is_filtered){
+        this.usuarios.data = this.usuarios.data.filter(usuario => usuario.id != id);
+      }
+    
     let alert =this.alertCtrl.create({
       header: 'Usuario activado correctamente',
       buttons: ['Aceptar']

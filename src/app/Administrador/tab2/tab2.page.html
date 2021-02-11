@@ -1,13 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 2 </ion-title>
+    <ion-title> Enviar PDF </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
+<br>
+<ion-content [fullscreen]="true" class="centrado" >
   <ion-list *ngIf="ofertas">
-    
-      <ion-button (click)="generarPDF(ofertas.data)">Generar PDF</ion-button>
-    
+  <p style="text-align:center">Listado Por ofertas</p>
+    <ion-button (click)="generarPDFoferta(ofertas.data)">Enviar PDF</ion-button>
+  </ion-list>
+  <br>
+  <ion-list *ngIf="usuarios">
+  <p style="text-align:center">Listado de participantes</p>
+    <ion-button (click)="generarPDFusuarios(usuarios.data,ofertas.data)">Enviar PDF</ion-button>
   </ion-list>
 </ion-content>
