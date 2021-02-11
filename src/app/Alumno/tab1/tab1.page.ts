@@ -21,8 +21,8 @@ export class Tab1Page {
     this.restService.getArticles()
     .then(data => {
       
-      this.noticias = data.data.filter(noticia => noticia.cicle_id == 3);
-      console.log(this.noticias);
+      this.noticias = data.data.filter(noticia => noticia.cicle_id == this.restService.datos_usuario.data.cicle_id);
+      console.log(this.restService.datos_usuario.data);
       // this.noticias = data.data.filter(noticia => noticia.cicle_id == this.restService.User.data.cicle_id);
       console.log(this.noticias);
     });
@@ -40,7 +40,7 @@ export class Tab1Page {
   filtro(event){
     this.noticias=this.restService.noticias.data;
     if(this.is_filtered){
-      this.noticias = this.noticias.filter(noticia => noticia.cicle_id == 3);
+      this.noticias = this.noticias.filter(noticia => noticia.cicle_id == this.restService.datos_usuario.data.cicle_id);
     }
   }
 }

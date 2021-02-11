@@ -4,7 +4,8 @@ export interface Oferta{
     headline: string;
     description: string;
     cicle_id: string;
-    date_max: Date;
+    cicle_name: string;
+    date_max: string;
     num_candidates: number;
 }
 

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content padding>
+  <img [src]="imagen" class="img" />
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Dirección de correo</ion-label>
+      <ion-input [formControl]="user" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Constraseña</ion-label>
+      <ion-input [formControl]="password" type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button class="btn btn-primary"expand="full" (click)="login()">Entrar</ion-button>
+  <ion-button class="btn" color="danger"expand="full" href="registro">Registrarse</ion-button>
+</ion-content>

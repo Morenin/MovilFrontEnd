@@ -1,14 +1,11 @@
-<ion-header>
-  <ion-toolbar style="background: var(--ion-color-new);">
-    <ion-title> Tab 1 </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="Noticias"></app-header>
 
 <ion-content color="medium">
 <ion-item >
   <ion-checkbox checked=true [(ngModel)]="is_filtered" (ionChange)="filtro($event)"></ion-checkbox>
   <ion-label style="margin-left:10px;"> Mostrar solo las ofertas de tu ciclo</ion-label>
 </ion-item>
+
 <span>
 <app-noticias [noticias]="noticias" [ciclos]="ciclos"></app-noticias>
 </span>

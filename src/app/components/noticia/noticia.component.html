@@ -1,7 +1,7 @@
 <ion-card>
 
   <ion-item lines="none">
-    <img [src]="imagen + noticia.image" class="ion-icon"/>
+    <img [src]="imagen + noticia.cicle_name + '.png' | lowercase" class="ion-icon"/>
     <h2 style="font-size: 15px;">{{ noticia.title }}</h2>
   </ion-item>
     <ion-label>

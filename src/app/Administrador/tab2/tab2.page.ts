@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RestService } from '../../services/rest.service';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Data } from '../../interfaces/Ofertas';
+import { Oferta } from '../../interfaces/Ofertas';
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -15,7 +15,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class Tab2Page {
   pdfObj: any;
   ofertas: any;
-  ofers: Data[];
+  ofers: Oferta[];
   
   constructor(public restService:RestService) {
     this.BuscarOfertas();

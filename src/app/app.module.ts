@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { PipesModule } from './pipes/pipes.module';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+
 
 
 
@@ -22,6 +24,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     StatusBar,
     SplashScreen,
+    DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [

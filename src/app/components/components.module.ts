@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { PipesModule } from '../pipes/pipes.module';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { OfertaComponent } from './oferta/oferta.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { OfertaComponent } from './oferta/oferta.component';
     NoticiasComponent,
     NoticiaComponent,
     OfertasComponent,
-    OfertaComponent
+    OfertaComponent,
+    HeaderComponent
     ,
   ],
   imports: [
@@ -24,6 +26,7 @@ import { OfertaComponent } from './oferta/oferta.component';
   exports: [
     NoticiasComponent,
     OfertasComponent,
+    HeaderComponent
   ]
 })
 export class ComponentsModule { }
