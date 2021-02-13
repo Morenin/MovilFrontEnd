@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RestService } from '../../services/rest.service';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Oferta } from '../../interfaces/Ofertas';
+import { Oferta } from 'src/app/interfaces/Ofertas';
 import { User } from 'src/app/interfaces/Usuarios';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
@@ -19,7 +19,7 @@ export class Tab2Page {
   pdfObj: any;
   ofertas: any;
   usuarios:any;
-  ofers:Oferta[];
+  ofers:Oferta[]; 
   user:User[];
   prueba:any;
   
@@ -172,8 +172,3 @@ export class Tab2Page {
   
   
 }
-  
-  
-
-
-

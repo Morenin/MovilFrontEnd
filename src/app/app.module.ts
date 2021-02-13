@@ -24,11 +24,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
   providers: [
     StatusBar,
     SplashScreen,
-<<<<<<< HEAD
     DatePipe,
-=======
     EmailComposer,
->>>>>>> f9aebc26608a2f5691ac958b1a3227b034b0cb2e
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [

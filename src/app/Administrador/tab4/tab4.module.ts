@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { Tab4PageRoutingModule } from './tab4-routing.module';
 import { ChartsModule } from 'ng2-charts';
 import { Tab4Page } from './tab4.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { Tab4Page } from './tab4.page';
     FormsModule,
     IonicModule,
     Tab4PageRoutingModule,
-    ChartsModule
+    ChartsModule,
+    ComponentsModule,
   ],
   declarations: [Tab4Page]
 })

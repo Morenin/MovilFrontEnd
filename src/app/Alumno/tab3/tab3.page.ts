@@ -16,7 +16,7 @@ export class Tab3Page {
   constructor(public restService: RestService) {}
 
   ionViewWillEnter(){
-    this.restService.getOffersApplied(1)
+    this.restService.getOffersApplied()
     .then(data => {
       console.log('ofertas ',data);
       this.ofertas = data.data; 
